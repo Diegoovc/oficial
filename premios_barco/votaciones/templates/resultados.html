@@ -1,0 +1,59 @@
+{% for categoria, opciones in categorias.items %}
+<div class="chart-container">
+    <h2>{{ categoria }}</h2>
+    <canvas id="chart-{{ forloop.counter }}"></canvas>
+
+    <div class="votantes-lista">
+        {% for opcion, datos in opciones.items %}
+            {% if datos.votantes %}
+                <h4>Votos para "{{ opcion }}" ({{ datos.votos }}):</h4>
+                <ul>
+                    {% for votante in datos.votantes %}
+                        <li>{{ votante }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script id="opciones_json_{{ forloop.counter }}" type="application/json">
+    {{ opciones|safe }}
+</script>
+
+<script>
+    try {
+        const opcionesData = JSON.parse(document.getElementById("opciones_json_{{ forloop.counter }}").textContent);
+        const labels = Object.keys(opcionesData);
+        const datos_votos = labels.map(label => opcionesData[label].votos);
+
+        if (labels.length > 0) {
+            const ctx = document.getElementById("chart-{{ forloop.counter }}").getContext("2d");
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Votos",
+                        data: datos_votos,
+                        backgroundColor: "rgba(54, 162, 235, 0.7)",
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { precision: 0 }
+                        }
+                    }
+                }
+            });
+        }
+    } catch (error) {
+        console.error("Error al generar gráfico para la categoría {{ categoria }}:", error);
+    }
+</script>
+{% endfor %}

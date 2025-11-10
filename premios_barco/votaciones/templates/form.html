@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premios EL BARCO</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+</head>
+<body>
+    <div class="cartel_inicial">
+        <h3>EL BARCO<br>Premios</h3>
+    </div>
+
+    <div class="titulo">
+        <h1>Bienvenidos a la votación de los premios del barco</h1>
+    </div>
+
+    <div class="caja">
+        <form action="/votar/" method="POST">
+            {% csrf_token %}
+
+            <label for="nombre">Tu nombre:</label><br>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+
+            <!-- CATEGORÍA 1 -->
+            <h2 class="titulo_nominacion">MÁS GITANO/A DEL GRUPO</h2>
+            <select name="mas_gitano" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="David">David</option>
+                <option value="DJ Peligro">DJ Peligro</option>
+            </select><br><br>
+
+            <!-- CATEGORÍA 2 -->
+            <h2 class="titulo_nominacion">MÁS BORRACHO/A DEL GRUPO</h2>
+            <select name="mas_borracho" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="David">David</option>
+                <option value="DJ Peligro">DJ Peligro</option>
+            </select><br><br>
+
+            <!-- CATEGORÍA 3 -->
+            <h2 class="titulo_nominacion">MEJOR GRUPO</h2>
+            <select name="mejor_grupo" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="Los del Viernes">Los del Viernes</option>
+                <option value="Los del Sábado">Los del Sábado</option>
+            </select><br><br>
+
+            <button type="submit" class="button">Enviar voto</button>
+        </form>
+    </div>
+</body>
+</html>
