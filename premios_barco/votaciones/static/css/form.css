@@ -59,12 +59,19 @@ body{
 
 
 /* From Uiverse.io by marcelodolza */ 
+.boton_centro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
 .button {
   --primary: #ff5569;
   --neutral-1: #f7f8f7;
   --neutral-2: #e7e7e7;
   --radius: 14px;
-  margin-left: auto;
+
   cursor: pointer;
   border-radius: var(--radius);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
