@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
 </head>
 <body>
-    <div class="cartel_inicial">
+    <div class="cartel_inicial"  style='background-image: url("{% static "css/imagenes/barco.png" %}");'>
         <h3>EL BARCO<br>Premios</h3>
     </div>
 
@@ -31,15 +31,16 @@
         {% endif %}
         <form action="{% url 'votaciones:votar' %}" method="POST">
             {% csrf_token %}
+ 
+            <input id="nombre" placeholder="Tu nombre" class="input" name="nombre" type="text" required />
 
-            <label for="nombre">Tu nombre:</label><br>
-            <input type="text" id="nombre" name="nombre" required><br><br>
 
             <h2 class="titulo_nominacion">MÁS GITANO/A DEL GRUPO</h2>
             <select name="mas_gitano" required>
                 <option value="">-- Elige tu voto --</option>
                 <option value="Diego">Diego</option>
                 <option value="DJ Peligro">DJ Peligro</option>
+                <option value="Sara">Sara</option>
             </select><br><br>
 
             <h2 class="titulo_nominacion">MÁS BORRACHO/A DEL GRUPO</h2>
@@ -50,14 +51,44 @@
                 <option value="Sonsoles">Sonsoles</option>
             </select><br><br>
 
-            <h2 class="titulo_nominacion">VÍDEO DEL AÑO</h2>
+           <h2 class="titulo_nominacion">VÍDEO DEL AÑO</h2>
+
+            <div class="video-grid">
+                <!-- Conversión de shorts a embed normal -->
+                <iframe src="https://www.youtube.com/embed/fwC3VqYXLs0" 
+                        title="David y Carla: David de la Jungla Pt6"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
+                <iframe src="https://www.youtube.com/embed/0crZtDrxl7U"
+                        title="Patricia: su cumple"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
+                <iframe src="https://www.youtube.com/embed/wdEiCzPVoZU"
+                        title="Diego: mi amigo el alien"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+
+                <iframe src="https://www.youtube.com/embed/EOcOhzY9zHg"
+                        title="David: David de la Jungla y su gaviota"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+            </div>
+
             <select name="video_del_ano" required>
                 <option value="">-- Elige tu voto --</option>
-                <option value="David y Carla: David de la Jungla Pt6">David y Carla: David de la Jungla Pt6"</option>
+                <option value="David y Carla: David de la Jungla Pt6">David y Carla: David de la Jungla Pt6</option>
                 <option value="Patricia: su cumple">Patricia: su cumple</option>
                 <option value="Diego: mi amigo el alien">Diego: mi amigo el alien</option>
                 <option value="David: David de la Jungla y su gaviota">David: David de la Jungla y su gaviota</option>
             </select><br><br>
+
+
 
             <h2 class="titulo_nominacion">MOMENTO HUMILDE DEL AÑO</h2>
             <select name="momento_humilde_del_ano" required>
@@ -73,8 +104,51 @@
                 <option value="">-- Elige tu voto --</option>
                 <option value="Patricia">Patricia"</option>
                 <option value="David">David</option>
-                <option value="DJ se lía con el hermano de María">DJ se lía con el hermano de María</option>
-                <option value="Dejarse el bolso en un banco - Patricia">Dejarse el bolso en un banco - Patricia</option>
+                <option value="Carla">Carla</option>
+            </select><br><br>
+
+            <h2 class="titulo_nominacion">MÁS TARDÓN DEL GRUPO</h2>
+            <select name="mas_tardon_del_grupo" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="Sergio">Sergio</option>
+                <option value="David">David</option>
+                <option value="Sara">Sara</option>
+            </select><br><br>
+
+            <h2 class="titulo_nominacion">MÁS TIMIDO/A DEL GRUPO</h2>
+            <select name="mas_timido/a_del_grupo" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="Sara Arribas">Sara Arribas</option>
+                <option value="María">María</option>
+                <option value="Sonsoles">Sonsoles</option>
+                <option value="Inés">Inés</option>
+            </select><br><br>
+
+            <h2 class="titulo_nominacion">MÁS COTILLA DEL GRUPO</h2>
+            <select name="mas_cotilla_del_grupo" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="Carla">Carla</option>
+                <option value="DJ Peligro">DJ Peligro</option>
+                <option value="Sara">Sara</option>
+                <option value="Patricia">Patricia"</option>
+            </select><br><br>
+
+            <h2 class="titulo_nominacion">PERSONA MÁS MEME DEL GRUPO</h2>
+            <select name="mas_meme_del_grupo" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="Sergio">Sergio</option>
+                <option value="DJ Peligro">DJ Peligro</option>
+                <option value="Patricia">Patricia"</option>
+            </select><br><br>
+
+            <h2 class="titulo_nominacion">MAYOR DESAPARECIDO DEL GRUPO</h2>
+            <select name="mayor_desaparecido_del_grupo" required>
+                <option value="">-- Elige tu voto --</option>
+                <option value="Sara Arribas">Sara Arribas</option>
+                <option value="María">María</option>
+                <option value="Sonsoles">Sonsoles</option>
+                <option value="Inés">Inés</option>
+                <option value="Sergio">Sergio</option>
             </select><br><br>
 
             <!-- Botón animado -->
@@ -113,17 +187,18 @@
                     </svg>
                     </div>
                     <p>
-                    <span style="--i:0">S</span>
-                    <span style="--i:1">e</span>
-                    <span style="--i:2">n</span>
-                    <span style="--i:3">d</span>
-                    <span style="--i:4">M</span>
-                    <span style="--i:5">e</span>
-                    <span style="--i:6">s</span>
-                    <span style="--i:7">s</span>
-                    <span style="--i:8">a</span>
-                    <span style="--i:9">g</span>
-                    <span style="--i:10">e</span>
+                        <span style="--i:0">E</span>
+                        <span style="--i:1">n</span>
+                        <span style="--i:2">v</span>
+                        <span style="--i:3">i</span>
+                        <span style="--i:4">a</span>
+                        <span style="--i:5">r</span>
+                        <span style="--i:6">&nbsp;</span>
+                        <span style="--i:7">v</span>
+                        <span style="--i:8">o</span>
+                        <span style="--i:9">t</span>
+                        <span style="--i:10">o</span>
+
                     </p>
                 </div>
                 <div class="state state--sent">

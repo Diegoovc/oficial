@@ -5,6 +5,37 @@ body{
     
     
 }
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    margin: 2rem 0;
+}
+
+.video-grid iframe {
+    width: 100%;
+    max-width: 300px; /* Ancho máximo para mantener formato vertical */
+    height: 530px; /* Altura específica para Shorts */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255,255,255,0.8);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .video-grid iframe {
+        max-width: 280px;
+        height: 500px;
+    }
+}
+
 .titulo_nominacion {
     font-family: 'Times New Roman', Times, serif;
 }
@@ -17,17 +48,46 @@ body{
     text-align: center;
 }
 .cartel_inicial { 
-    background-image: url("/static/img/barco.png");
-    
-    background-position: 45% 45%;
-    /* Estilos de texto */
+    background-position: center;
+    background-size: cover; /* Hace que la imagen cubra todo el fondo sin deformarse */
+    background-repeat: no-repeat;
+
+    /* Texto */
     color: white; 
-    text-shadow: 0.1% 0.1% 0.3% rgba(0,0,0,0.8);
+    text-shadow: 0 0.1em 0.3em rgba(0,0,0,0.8);
     display: flex; 
-    flex-direction: column; /* Asegura que el contenido interno vaya de arriba abajo */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Centra el texto */
+    text-align: center;
+    padding: 4rem 1rem; /* Espaciado adaptable */
+
+    /* Transición suave al cambiar de tamaño */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 📱 Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .cartel_inicial {
+        background-position: center top; /* Centra mejor la imagen en vertical */
+        padding: 3rem 1rem;
+    }
+
+    .cartel_inicial h3 {
+        font-size: 1.5rem; /* Reduce el tamaño del texto en móvil */
+        line-height: 1.2;
+    }
+}
+
+/* 📱 Ajuste extra para móviles muy pequeños */
+@media (max-width: 480px) {
+    .cartel_inicial {
+        padding: 2rem 0.5rem;
+    }
+
+    .cartel_inicial h3 {
+        font-size: 1.2rem;
+    }
 }
 
 .cartel_inicial h3 {
@@ -39,21 +99,33 @@ body{
 }
 
 .caja {
+    background: rgba(255, 255, 255, 0.701); /* fondo translúcido */
+    backdrop-filter: blur(10px); /* desenfoque */
+    -webkit-backdrop-filter: blur(25px); /* soporte para Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* borde suave */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* sombra */
+    color: #000; /* texto oscuro o blanco según el fondo */
     padding-top: 2%;
     padding-bottom: 2%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.5em;
-    background-color: palegoldenrod;
     text-align: center;
-    border-radius: 20px;
     margin-bottom: 5%;
     padding-right:3%;
     padding-left: 3%;
-
 }
+
 .titulo_nominacion {
-    box-shadow:0 20px 30px rgba(214, 45, 45, 0.2) ;
-    background-color: chocolate;
+    background: rgba(255, 255, 255, 0.189); /* fondo translúcido */
+    backdrop-filter: blur(15px); /* desenfoque */
+    -webkit-backdrop-filter: blur(10px); /* soporte para Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* borde suave */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* sombra */
+    color: #000;
+    padding-top: 1%;
+    padding-bottom: 1%;
 
 }
 
@@ -369,4 +441,21 @@ body{
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* Username */
+.input {
+  border: none;
+  outline: none;
+  border-radius: 100px;
+  padding: 1em;
+  background-color: #e1e2e3;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: 300ms ease-in-out;
+}
+
+.input:focus {
+  background-color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
 }
